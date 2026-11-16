@@ -21,7 +21,7 @@ jobs:
       - name: Set up Gradle 9.5.0
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: "9.7.1"
+          gradle-version: "9.5.1"
 
       - name: Validate project
         run: |
