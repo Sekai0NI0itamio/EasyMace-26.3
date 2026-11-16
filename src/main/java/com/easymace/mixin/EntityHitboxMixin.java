@@ -2,13 +2,14 @@ package com.easymace.mixin;
 
 import com.easymace.config.EasyMaceConfig;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,7 +29,11 @@ public class EntityHitboxMixin {
         ItemStack mainHand = mc.player.getMainHandItem();
         if (mainHand.getItem() != Items.MACE) return;
 
+        // Only expand the hitbox of the entity the player is currently targeting
         Entity self = (Entity) (Object) this;
+        HitResult crosshair = mc.crosshairTarget;
+        if (!(crosshair instanceof EntityHitResult entityHit)) return;
+        if (entityHit.getEntity() != self) return;
 
         // Check if this entity type should be expanded
         if (!cfg.hitboxAllEntities) {
