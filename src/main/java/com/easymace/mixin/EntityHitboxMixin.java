@@ -31,7 +31,7 @@ public class EntityHitboxMixin {
 
         // Only expand the hitbox of the entity the player is currently targeting
         Entity self = (Entity) (Object) this;
-        HitResult crosshair = mc.crosshairTarget;
+        HitResult crosshair = mc.hitResult;
         if (!(crosshair instanceof EntityHitResult entityHit)) return;
         if (entityHit.getEntity() != self) return;
 
