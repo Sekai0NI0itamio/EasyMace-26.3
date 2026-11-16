@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "easymace",
+  "version": "${version}",
+  "name": "Easy Mace",
+  "description": "Auto-swaps to your mace when attacking so mace damage (Breach/Density) applies to sword hits. Configurable entity hitbox expansion for easier targeting.",
+  "authors": [
+    "Sekai0NI0itamio"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.easymace.EasyMaceMod"
+    ]
+  },
+  "mixins": [
+    "easymace.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "fabric-api": "*",
+    "minecraft": "~26.3",
+    "java": ">=25"
+  }
+}

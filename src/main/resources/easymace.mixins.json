@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.easymace.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "MinecraftClientMixin",
+    "EntityHitboxMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
