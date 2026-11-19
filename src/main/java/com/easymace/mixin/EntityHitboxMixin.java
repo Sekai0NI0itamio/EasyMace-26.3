@@ -21,7 +21,6 @@ public class EntityHitboxMixin {
         if (!cfg.hitboxEnabled) return;
         if (cfg.hitboxMultiplier <= 1.0) return;
 
-        // Only expand hitboxes when the player is holding a mace
         Minecraft mc = Minecraft.getInstance();
         if (mc == null || mc.player == null) return;
         ItemStack mainHand = mc.player.getMainHandItem();
@@ -29,8 +28,11 @@ public class EntityHitboxMixin {
 
         Entity self = (Entity) (Object) this;
 
-        // Don't expand the player's own hitbox
-        if (self == mc.player) return;
+        // Never expand the local player's hitbox. The integrated server uses a
+        // separate ServerPlayerEntity instance, so an identity check against
+        // mc.player is not enough - compare UUIDs instead. Expanding the
+        // player's box makes block collision use a larger box (stand on air).
+        if (self.getUUID().equals(mc.player.getUUID())) return;
 
         // Only expand entities within attack range (6 blocks)
         double distSq = mc.player.distanceToSqr(self);
