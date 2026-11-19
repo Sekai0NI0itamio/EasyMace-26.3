@@ -4,8 +4,7 @@
   "package": "com.easymace.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
-    "MinecraftClientMixin",
-    "EntityHitboxMixin"
+    "MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
