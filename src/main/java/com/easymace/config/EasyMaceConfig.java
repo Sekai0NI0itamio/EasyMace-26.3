@@ -13,7 +13,7 @@ public class EasyMaceConfig {
     public double slamHeightThreshold = 1.5;
     public String preferredEnchantForNormal = "breach";
     public String preferredEnchantForSlam = "density";
-    public double hitboxMultiplier = 5.0;
+    public double hitboxExpand = 1.0;
     public boolean hitboxEnabled = true;
     public boolean hitboxAllEntities = true;
     public java.util.List<String> hitboxEntities = new java.util.ArrayList<>();
